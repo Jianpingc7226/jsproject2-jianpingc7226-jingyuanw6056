@@ -13,7 +13,10 @@ $.ajax({
           document.write("the death count of that day is " + deathCount + ".</br>");
           document.write("the case count of that day is " + caseCount + ".");
           return
-          };
+          } else {
+            document.write("I please put in date in form of YYYY-MM-DD, example:2020-06-21");
+            return;
+          }
       }
     }
 });
