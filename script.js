@@ -2,7 +2,7 @@ $.ajax({
     url: 'https://data.cityofnewyork.us/resource/rc75-m7u3.json',
     dataType: 'json',
     success: function(data) {
-      var userOption = prompt("Do wish to view the overal data? (Input 1). Or view a specific date? (Input 2, please only enter 1 or 2)") //gives the user some options to choose from
+      var userOption = prompt("Do wish to view the overal data? (Input 1). Or view a specific date? (Input 2)", "Put only 1 or 2") //gives the user some options to choose from
       
       if (userOption == 1) {
         var tdeathCount = 0;
@@ -18,21 +18,18 @@ $.ajax({
       }
       
       else if (userOption == 2) {
-        var userDate = prompt("What date you want to go? (Please enter in this in form of YYYY-MM-DD");
+        var userDate = prompt("What date you want to go? (Please enter in this in form of YYYY-MM-DD", "Example 2020-06-01");
         for(i = 0; i < data.length; i++){
           var deathCount = data[i].death_count;
           var caseCount = data[i].case_count; //we use this to simplify things up
           var date = data[i].date_of_interest;
-          var checkPoint = 0;
           if (date.substring(0,10) == userDate){ //Jian Ping did a very good job at this part :D
             document.write("The death count of " + userDate + " is " + deathCount + ".</br>");
             document.write("The case count of " + userDate + " is " + caseCount + ".");
-            checkPoint ++;
+            return; //vaild input will end the entire function, so the error message will not show up
           }
         }
-        if (checkPoint == 0) { //this is used to check whether or not the user input a vaild input. If not, beep- you got a friendly notice
-          document.write("Invaild input or date is out of bounds/undocumented, please refresh the page and try again.") //Incase the user put something wrong, here is a notice message
-        }
+        document.write("Invaild input or date is out of bounds/undocumented, please refresh the page and try again.") //User will get a friendly message if non-vaild input is given. 
       }
       
       else {
