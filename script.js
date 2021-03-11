@@ -18,7 +18,7 @@ $.ajax({
       }
       
       else if (userOption == 2) {
-        var userDate = prompt("What date you want to go? (Please enter in this in form of YYYY-MM-DD", "Example 2020-06-01");
+        var userDate = prompt("What date you want to go? (Please enter in this in form of YYYY-MM-DD", "Example 2020-06-01");//ask user the date
         for(i = 0; i < data.length; i++){
           var deathCount = data[i].death_count;
           var caseCount = data[i].case_count; //we use this to simplify things up
